@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<script>
+// // 创建一个ul
+// var ul = document.createElement('ul');
+// // id attribute
+// ul.setAttribute('id','my_list');
+//
+// var li = document.createElement('li');
+// li.appendChild(document.createTextNode('Some Text'));
+// ul.appendChild(li);
+// //添加到body
+// document.body.appendChild(ul);
+
+
+//创建一个对象字面量
+//DOMBuilder 功能为创建DOM的封装
+var DOMBuilder = {
+  // 创建方法  tag 标签
+  // attrs  属性的数组
+  // children 子元素
+  create:function(tag, attrs, children) {
+    // 如果attrs 未传值，默认为空对象，以免报错
+    attrs = attrs || {};
+    //子节点 如果未传值， 则为空数组
+    children = children || [];
+    // el 即创建后的元素
+    var el = document.createElement(tag);
+
+    //给元素添加属性
+    // for in 常用于遍历对象
+    for(var attr in attrs) {
+      el.setAttribute(attr,attrs[attr].toString());
+    }
+
+    //给元素添加子元素
+    for(var i = 0; i < children.length; i++) {
+      //如果是文本节点
+      if(typeof children[i] == 'string') {
+        //将子节点设置为文本节点
+        children[i] = document.createTextNode(children[i]);
+      }
+      //将子元素添加到el上
+      el.appendChild(children[i]);
+    }
+
+    return el;
+  }
+}
+</script>
+</body>
+</html>

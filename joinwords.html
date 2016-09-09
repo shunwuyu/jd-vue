@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<script>
+// 创建一个joinWords函数
+// 参数 a b
+// 将a b 连起来
+// 返回值为字符串
+function joinWords(a, b) {
+  return [a, b].join(' ');
+}
+
+var prefixer = (function(word) {
+  // 匿名函数 ,函数体的功能就是
+  return function(b) {
+    //调用joinWords函数，并将结果返回
+    return joinWords(word,b);
+  }
+  // return joinWords(word,b);
+})('Hate');
+
+console.log(prefixer('Java'));
+
+// var prefixWithHate = prefixer('Hate');
+// alert(prefixWithHate);
+// console.log(prefixWithHate('Java'));
+//
+// var prefixWithLove = prefixer('Love');
+// console.log(prefixWithLove('JavaScript'));
+// console.log(joinWords('I',joinWords('Love','JavaScript')));
+
+</script>
+</body>
+</html>
